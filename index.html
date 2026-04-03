@@ -72,6 +72,7 @@ body {
   border: 2px solid rgba(255,255,255,0.2);
   transition: 0.3s;
   object-fit: cover; /* 🔥 חשוב */
+  box-shadow: 0 0 15px rgba(255,255,255,0.2);
 }
 
 .avatar:hover {
@@ -107,6 +108,11 @@ p {
   text-decoration: none;
   color: white;
   transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+a {
+  cursor: pointer;
 }
 
 /* ANIMATION */
@@ -136,11 +142,27 @@ p {
 .discord { background: #5865F2; }
 .kick { background: #00e701; color: black; }
 .instagram { background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7); }
+.support { background: linear-gradient(45deg, #00c6ff, #0072ff); box-shadow: 0 0 20px rgba(0,114,255,0.6); }
 
-/* SUPPORT SPECIAL */
-.support {
-  background: linear-gradient(45deg, #00c6ff, #0072ff);
-  box-shadow: 0 0 20px rgba(0,114,255,0.6);
+/* SPECIAL */
+.youtube:hover {
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+}
+
+.tiktok:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.discord:hover {
+  box-shadow: 0 0 20px rgba(88, 101, 242, 0.7);
+}
+
+.kick:hover {
+  box-shadow: 0 0 20px rgba(0, 231, 1, 0.7);
+}
+
+.instagram:hover {
+  box-shadow: 0 0 20px rgba(238, 42, 123, 0.7);
 }
 
 .support:hover {
@@ -151,6 +173,10 @@ p {
 .btn:hover {
   transform: scale(1.05) translateY(-2px);
   opacity: 0.95;
+}
+
+.btn:active {
+  transform: scale(0.97);
 }
 
 /* FOOTER */
@@ -173,7 +199,7 @@ footer {
 <img src="https://cdn.discordapp.com/attachments/985166996364722197/1489407781323800776/IDL_LOGO.png?ex=69d0f756&is=69cfa5d6&hm=9b338dcc7badc8333df4f1f469bce21b4a0ff1df75028be010a6602f000f4f09&" class="avatar">
 
 <h1>JoyBoy IDL</h1>
-<p>Contact Creator | Offical Links</p>
+<p>Official Links • Join The IDL Community</p>
 
 <div class="links">
 <a href="https://www.youtube.com/@SterbenIDL" class="btn youtube"><i class="fab fa-youtube"></i> YouTube</a>
