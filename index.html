@@ -261,15 +261,17 @@ footer {
 </footer>
 
 <script>
-const avatar = document.getElementById('avatar');
-const liveStatus = document.getElementById('liveStatus');
+document.addEventListener('DOMContentLoaded', () => {
+  const avatar = document.getElementById('avatar');
+  const liveStatus = document.getElementById('liveStatus');
 
-avatar.addEventListener('click', () => {
-  liveStatus.classList.add('show');
+  avatar.addEventListener('click', () => {
+    liveStatus.classList.add('show');
 
-  setTimeout(() => {
-    liveStatus.classList.remove('show');
-  }, 3000);
+    setTimeout(() => {
+      liveStatus.classList.remove('show');
+    }, 3000);
+  });
 });
 </script>
 
