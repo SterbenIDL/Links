@@ -44,17 +44,6 @@ body {
   backdrop-filter: blur(6px);
 }
 
-/* MOUSE GLOW */
-.glow {
-  position: fixed;
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(0,200,255,0.2), transparent 70%);
-  filter: blur(100px);
-  pointer-events: none;
-  z-index: 0;
-  transform: translate(-50%, -50%);
-}
 /* CARD */
 .card {
   background: rgba(255,255,255,0.06);
@@ -179,8 +168,6 @@ footer {
 <body>
 
 <div class="bg"></div>
-<div class="glow"></div>
-
 <div class="card">
 
 <img src="https://cdn.discordapp.com/attachments/985166996364722197/1489407781323800776/IDL_LOGO.png?ex=69d0f756&is=69cfa5d6&hm=9b338dcc7badc8333df4f1f469bce21b4a0ff1df75028be010a6602f000f4f09&" class="avatar">
@@ -202,14 +189,6 @@ footer {
 <footer>
 © 2026 JoyBoyIDL • All Rights Reserved
 </footer>
-
-<script>
-document.addEventListener("mousemove", (e) => {
-  const glow = document.querySelector(".glow");
-  glow.style.left = e.clientX + "px";
-  glow.style.top = e.clientY + "px";
-});
-</script>
 
 </body>
 </html>
