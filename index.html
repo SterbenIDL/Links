@@ -46,20 +46,18 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.65);
-  backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.6);
 }
 
-/* CARD */
+/* CARD (בלי glass) */
 .card {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(30px);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: #111; /* רקע רגיל במקום שקוף */
+  border: 1px solid #333;
   border-radius: 20px;
   padding: 35px;
   width: 340px;
   text-align: center;
-  box-shadow: 0 0 60px rgba(0,0,0,0.8);
+  box-shadow: 0 0 40px rgba(0,0,0,0.9);
   animation: fadeIn 1s ease;
   position: relative;
   z-index: 2;
@@ -137,28 +135,6 @@ p {
 
 .btn:hover {
   transform: scale(1.05) translateY(-2px);
-}
-
-/* ANIMATION */
-.links a {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.6s ease forwards;
-}
-
-.links a:nth-child(1) { animation-delay: 0.2s; }
-.links a:nth-child(2) { animation-delay: 0.4s; }
-.links a:nth-child(3) { animation-delay: 0.6s; }
-.links a:nth-child(4) { animation-delay: 0.8s; }
-.links a:nth-child(5) { animation-delay: 1s; }
-.links a:nth-child(6) { animation-delay: 1.2s; }
-.links a:nth-child(7) { animation-delay: 1.4s; }
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* COLORS */
