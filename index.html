@@ -86,9 +86,27 @@ body {
 
 /* TEXT */
 h1 {
-  font-size: 38px;
+  font-size: 40px;
   letter-spacing: 2px;
-  color: #00bfff;
+  font-weight: 900;
+  color: #00e5ff;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow:
+      0 0 5px #00e5ff,
+      0 0 10px #00e5ff,
+      0 0 20px #00e5ff;
+  }
+  to {
+    text-shadow:
+      0 0 10px #00e5ff,
+      0 0 20px #00e5ff,
+      0 0 40px #00bfff,
+      0 0 60px #00bfff;
+  }
 }
 
 p {
