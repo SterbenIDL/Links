@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IDL Links</title>
+<title>JoyBoyIDL - Links</title>
+
+<!-- FAVICON (לוגו בכרטיסיה) -->
+<link rel="icon" href="https://cdn.discordapp.com/attachments/985166996364722197/1489407781323800776/IDL_LOGO.png?ex=69d0f756&is=69cfa5d6&hm=9b338dcc7badc8333df4f1f469bce21b4a0ff1df75028be010a6602f000f4f09&" type="image/png">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 * {
@@ -16,18 +22,19 @@
 body {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
   color: white;
+  overflow: hidden;
 }
 
-/* Animated background */
+/* background */
 .bg {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: linear-gradient(-45deg, #000000, #0f172a, #020617, #111827);
+  background: linear-gradient(-45deg, #000, #0f172a, #020617, #111827);
   background-size: 400% 400%;
   animation: gradientMove 12s ease infinite;
   z-index: -2;
@@ -39,21 +46,14 @@ body {
   100% {background-position: 0% 50%;}
 }
 
-/* glow effect */
+/* glow */
 .glow {
   position: absolute;
   width: 300px;
   height: 300px;
   background: radial-gradient(circle, rgba(0,200,255,0.3), transparent 70%);
   filter: blur(80px);
-  animation: floatGlow 6s ease-in-out infinite;
   z-index: -1;
-}
-
-@keyframes floatGlow {
-  0% {transform: translate(-50%, -50%) translateY(0px);}
-  50% {transform: translate(-50%, -50%) translateY(40px);}
-  100% {transform: translate(-50%, -50%) translateY(0px);}
 }
 
 /* card */
@@ -61,72 +61,78 @@ body {
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(25px);
   border-radius: 20px;
-  padding: 40px;
-  width: 320px;
+  padding: 35px;
+  width: 340px;
   text-align: center;
   box-shadow: 0 0 40px rgba(0,0,0,0.6);
-  animation: fadeIn 1s ease;
 }
 
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
+/* avatar/logo */
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 2px solid rgba(255,255,255,0.2);
 }
 
+/* title */
 h1 {
-  font-size: 42px;
-  letter-spacing: 4px;
+  font-size: 40px;
+  letter-spacing: 3px;
 }
 
 p {
-  margin-top: 10px;
   opacity: 0.7;
   font-size: 14px;
+  margin-bottom: 15px;
 }
 
-/* buttons */
+/* links */
 .links {
-  margin-top: 25px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
+/* base button */
 .btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   padding: 12px;
   border-radius: 10px;
   text-decoration: none;
   color: white;
-  background: rgba(255,255,255,0.08);
   transition: 0.3s;
-  position: relative;
-  overflow: hidden;
 }
 
-/* hover glow */
+/* icons */
+.btn i {
+  font-size: 18px;
+}
+
+/* platform colors */
+.youtube { background: #FF0000; }
+.tiktok { background: #111; }
+.discord { background: #5865F2; }
+.kick { background: #00e701; color: black; }
+.instagram { 
+  background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
+}
+
+/* hover */
 .btn:hover {
-  transform: scale(1.06);
-  background: rgba(255,255,255,0.15);
-  box-shadow: 0 0 20px rgba(0,200,255,0.3);
+  transform: scale(1.05);
+  opacity: 0.9;
 }
 
-/* ripple effect */
-.btn::after {
-  content: "";
+/* footer */
+footer {
   position: absolute;
-  width: 100px;
-  height: 100px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 50%;
-  transform: scale(0);
-  opacity: 0;
-  transition: transform 0.5s, opacity 1s;
-}
-
-.btn:active::after {
-  transform: scale(3);
-  opacity: 1;
-  transition: 0s;
+  bottom: 10px;
+  font-size: 12px;
+  opacity: 0.6;
 }
 </style>
 </head>
@@ -137,20 +143,44 @@ p {
 <div class="glow"></div>
 
 <div class="card">
+
+  <!-- LOGO / AVATAR -->
+  <img src="https://cdn.discordapp.com/attachments/985166996364722197/1489407781323800776/IDL_LOGO.png?ex=69d0f756&is=69cfa5d6&hm=9b338dcc7badc8333df4f1f469bce21b4a0ff1df75028be010a6602f000f4f09&" class="avatar">
+
   <h1>JoyBoy IDL</h1>
   <p>Content Creator | Streaming & Gaming</p>
 
   <div class="links">
-    <a href="https://www.youtube.com/@SterbenIDL" class="btn">YouTube</a>
-    <a href="https://www.TikTok.com/@joyboyidl" class="btn">TikTok</a>
-    <a href="https://discord.gg/TRkXjHbGWp" class="btn">Discord</a>
-    <a href="https://kick.com/joyboyidl" class="btn">Kick</a>
-    <a href="https://instagram.com/idanlapierre" class="btn">Instagram</a>
-    <a href="#" class="btn">Support Me</a>
+    <a href="https://www.youtube.com/@SterbenIDL" class="btn youtube">
+      <i class="fab fa-youtube"></i> YouTube
+    </a>
+
+    <a href="https://www.TikTok.com/@joyboyidl" class="btn tiktok">
+      <i class="fab fa-tiktok"></i> TikTok
+    </a>
+
+    <a href="https://discord.gg/TRkXjHbGWp" class="btn discord">
+      <i class="fab fa-discord"></i> Discord
+    </a>
+
+    <a href="https://kick.com/joyboyidl" class="btn kick">
+      <i class="fas fa-bolt"></i> Kick
+    </a>
+
+    <a href="https://instagram.com/idanlapierre" class="btn instagram">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+
+    <a href="#" class="btn Support">
+      <i class="fab fa-Support"></i> Support Me
+    </a>
   </div>
+
 </div>
 
-<div class="footer">© 2026 JoyBoy</div>
+<footer>
+  © 2026 IDL • All Rights Reserved
+</footer>
 
 </body>
 </html>
