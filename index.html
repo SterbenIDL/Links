@@ -51,8 +51,9 @@ body {
 
 /* CARD */
 .card {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.2);
   border-radius: 20px;
   padding: 35px;
   width: 340px;
@@ -90,23 +91,18 @@ h1 {
   letter-spacing: 2px;
   font-weight: 900;
   color: #00e5ff;
-  animation: glow 2s infinite alternate;
+  text-shadow:
+    0 0 5px #00e5ff,
+    0 0 10px #00e5ff,
+    0 0 20px #00bfff;
+  transition: 0.3s;
 }
 
-@keyframes glow {
-  from {
-    text-shadow:
-      0 0 5px #00e5ff,
-      0 0 10px #00e5ff,
-      0 0 20px #00e5ff;
-  }
-  to {
-    text-shadow:
-      0 0 10px #00e5ff,
-      0 0 20px #00e5ff,
-      0 0 40px #00bfff,
-      0 0 60px #00bfff;
-  }
+h1:hover {
+  text-shadow:
+    0 0 10px #00e5ff,
+    0 0 25px #00e5ff,
+    0 0 50px #00bfff;
 }
 
 p {
@@ -120,6 +116,27 @@ p {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.links a {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.links a:nth-child(1) { animation-delay: 0.2s; }
+.links a:nth-child(2) { animation-delay: 0.4s; }
+.links a:nth-child(3) { animation-delay: 0.6s; }
+.links a:nth-child(4) { animation-delay: 0.8s; }
+.links a:nth-child(5) { animation-delay: 1s; }
+.links a:nth-child(6) { animation-delay: 1.2s; }
+.links a:nth-child(7) { animation-delay: 1.4s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* BUTTON */
