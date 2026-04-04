@@ -27,7 +27,6 @@ body {
   overflow: hidden;
 }
 
-/* background gradient */
 body::before {
   content: "";
   position: fixed;
@@ -62,8 +61,12 @@ body::after {
   height: 100%;
   background: url('IDL_Banner.png') center/cover no-repeat;
   z-index: -3;
-  transform: scale(1.08);
-  transition: transform 0.2s ease;
+  animation: bgZoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes bgZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
 }
 
 .bg::after {
@@ -88,9 +91,6 @@ body::after {
   position: relative;
   overflow: hidden;
   z-index: 2;
-
-  transform-style: preserve-3d;
-  transition: transform 0.2s ease;
 }
 
 @keyframes fadeIn {
@@ -98,7 +98,7 @@ body::after {
   to {opacity: 1; transform: translateY(0);}
 }
 
-/* border glow */
+/* border */
 .card::before {
   content: "";
   position: absolute;
@@ -142,6 +142,10 @@ body::after {
   box-shadow: 0 0 25px rgba(255,255,255,0.3);
 }
 
+.avatar:active {
+  transform: scale(0.95);
+}
+
 /* TEXT */
 h1 {
   font-size: 40px;
@@ -149,12 +153,18 @@ h1 {
   font-weight: 900;
   color: #00e5ff;
   text-shadow: 0 0 6px rgba(0,229,255,0.4);
+  transition: 0.3s;
+}
+
+h1:hover {
+  text-shadow: 0 0 10px rgba(0,229,255,0.6);
 }
 
 p {
   opacity: 0.75;
   font-size: 14px;
   margin-bottom: 20px;
+  letter-spacing: 0.3px;
 }
 
 /* LINKS */
@@ -164,6 +174,28 @@ p {
   gap: 12px;
 }
 
+.links a {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.links a:nth-child(1) { animation-delay: 0.2s; }
+.links a:nth-child(2) { animation-delay: 0.4s; }
+.links a:nth-child(3) { animation-delay: 0.6s; }
+.links a:nth-child(4) { animation-delay: 0.8s; }
+.links a:nth-child(5) { animation-delay: 1s; }
+.links a:nth-child(6) { animation-delay: 1.2s; }
+.links a:nth-child(7) { animation-delay: 1.4s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* BUTTON */
 .btn {
   display: flex;
   align-items: center;
@@ -177,10 +209,33 @@ p {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+  transition: 0.5s;
+}
+
+.btn:hover::after {
+  left: 100%;
 }
 
 .btn:hover {
   transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  letter-spacing: 0.5px;
+}
+
+.btn:active {
+  transform: scale(0.94);
 }
 
 /* COLORS */
@@ -191,6 +246,14 @@ p {
 .instagram { background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7); }
 .reddit { background: linear-gradient(45deg, #FF4500, #FF8717); }
 .linkedin { background: linear-gradient(45deg, #0077B5, #00A0DC); }
+
+.youtube:hover { box-shadow: 0 0 30px rgba(255,0,0,1); }
+.tiktok:hover { box-shadow: 0 0 30px rgba(238,42,123,1); }
+.discord:hover { box-shadow: 0 0 30px rgba(88,101,242,1); }
+.kick:hover { box-shadow: 0 0 30px rgba(0,231,1,1); }
+.instagram:hover { box-shadow: 0 0 30px rgba(238,42,123,1); }
+.reddit:hover { box-shadow: 0 0 30px rgba(255,69,0,1); }
+.linkedin:hover { box-shadow: 0 0 30px rgba(0,119,181,1); }
 
 /* LIVE STATUS */
 .live-status {
@@ -207,7 +270,25 @@ p {
   opacity: 0;
   transform: translateY(-20px);
   pointer-events: none;
-  transition: 0.5s;
+  transition: 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.subs {
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: 0.8;
+  animation: fadeNumber 0.6s ease;
+}
+
+@keyframes fadeNumber {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.live-status span {
+  font-size: 12px;
+  opacity: 0.7;
+  display: block;
 }
 
 .live-status.show {
@@ -215,6 +296,7 @@ p {
   transform: translateY(0);
 }
 
+/* FOOTER */
 footer {
   position: absolute;
   bottom: 10px;
@@ -222,6 +304,17 @@ footer {
   text-align: center;
   font-size: 12px;
   opacity: 0.6;
+}
+
+@media (max-width: 400px) {
+  .card {
+    width: 90%;
+    padding: 25px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
 }
 </style>
 </head>
@@ -238,20 +331,22 @@ footer {
 <p>Official Links • Join The IDL Community</p>
 
 <div class="links">
-<a href="#" class="btn youtube"><i class="fab fa-youtube"></i> YouTube</a>
-<a href="#" class="btn tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
-<a href="#" class="btn discord"><i class="fab fa-discord"></i> Discord</a>
-<a href="#" class="btn kick"><i class="fa-brands fa-kickstarter-k"></i> Kick</a>
-<a href="#" class="btn instagram"><i class="fab fa-instagram"></i> Instagram</a>
-<a href="#" class="btn reddit"><i class="fa-brands fa-reddit-alien"></i> Reddit</a>
-<a href="#" class="btn linkedin"><i class="fa-brands fa-linkedin"></i> Linkedin</a>
+<a href="https://www.youtube.com/@SterbenIDL" class="btn youtube"><i class="fab fa-youtube"></i> YouTube</a>
+<a href="https://www.tiktok.com/@joyboyidl" class="btn tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+<a href="https://discord.gg/TRkXjHbGWp" class="btn discord"><i class="fab fa-discord"></i> Discord</a>
+<a href="https://kick.com/joyboyidl" class="btn kick"><i class="fa-brands fa-kickstarter-k"></i> Kick</a>
+<a href="https://instagram.com/idanlapierre" class="btn instagram"><i class="fab fa-instagram"></i> Instagram</a>
+<a href="https://www.reddit.com/user/IDL_YTB/" class="btn reddit"><i class="fa-brands fa-reddit-alien"></i> Reddit</a>
+<a href="https://www.linkedin.com/in/idan-lapierre/" class="btn linkedin"><i class="fa-brands fa-linkedin"></i> Linkedin</a>
 </div>
 
 </div>
 
+<!-- LIVE STATUS POPUP -->
 <div id="liveStatus" class="live-status">
-🔴 LIVE NOW<br>
-<span>Active / Online</span>
+  🔴 LIVE NOW<br>
+  <span>Active / Online</span>
+  <div class="subs">👥 7 Subscribers</div>
 </div>
 
 <footer>
@@ -259,47 +354,54 @@ footer {
 </footer>
 
 <script>
-const card = document.querySelector(".card");
-const bg = document.querySelector(".bg");
+document.addEventListener('DOMContentLoaded', () => {
+  const avatar = document.getElementById('avatar');
+  const liveStatus = document.getElementById('liveStatus');
 
-/* 3D TILT */
-card.addEventListener("mousemove", (e) => {
-  const rect = card.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
+  avatar.addEventListener('click', () => {
+    liveStatus.classList.add('show');
 
-  const centerX = rect.width / 2;
-  const centerY = rect.height / 2;
-
-  const rotateX = (y - centerY) / 20;
-  const rotateY = (x - centerX) / -20;
-
-  card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    setTimeout(() => {
+      liveStatus.classList.remove('show');
+    }, 3000);
+  });
 });
 
-card.addEventListener("mouseleave", () => {
-  card.style.transform = "rotateX(0) rotateY(0)";
-});
+// create glow
+const glow = document.createElement("div");
+glow.style.position = "fixed";
+glow.style.width = "180px";
+glow.style.height = "180px";
+glow.style.background = "radial-gradient(circle, rgba(0,229,255,0.15), transparent)";
+glow.style.pointerEvents = "none";
+glow.style.borderRadius = "50%";
+glow.style.transform = "translate(-50%, -50%)";
+glow.style.willChange = "transform";
+glow.style.zIndex = "0";
 
-/* BACKGROUND PARALLAX */
+document.body.appendChild(glow);
+
+// mouse tracking
+let mouseX = 0, mouseY = 0;
+let currentX = 0, currentY = 0;
+
 document.addEventListener("mousemove", (e) => {
-  const x = (e.clientX / window.innerWidth - 0.5) * 20;
-  const y = (e.clientY / window.innerHeight - 0.5) * 20;
-
-  bg.style.transform = `translate(${x}px, ${y}px) scale(1.08)`;
+  mouseX = e.clientX;
+  mouseY = e.clientY;
 });
 
-/* LIVE STATUS */
-const avatar = document.getElementById('avatar');
-const liveStatus = document.getElementById('liveStatus');
+// smooth animation loop
+function animate() {
+  currentX += (mouseX - currentX) * 0.1;
+  currentY += (mouseY - currentY) * 0.1;
 
-avatar.addEventListener('click', () => {
-  liveStatus.classList.add('show');
+  glow.style.left = currentX + "px";
+  glow.style.top = currentY + "px";
 
-  setTimeout(() => {
-    liveStatus.classList.remove('show');
-  }, 3000);
-});
+  requestAnimationFrame(animate);
+}
+
+animate();
 </script>
 
 </body>
