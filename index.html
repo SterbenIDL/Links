@@ -105,14 +105,32 @@ body::after {
   inset: 0;
   padding: 1px;
   border-radius: 20px;
+
   background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.35),   /* לבן */
-    rgba(0,180,255,0.25),     /* תכלת */
-    rgba(0,120,255,0.18),     /* כחול */
-    rgba(255,255,255,0.15)     /* חזרה ללבן */
+    120deg,
+    rgba(255,255,255,0.5),
+    rgba(0,180,255,0.35),
+    rgba(0,120,255,0.25),
+    rgba(255,255,255,0.4)
   );
+
+  background-size: 300% 300%;
+  animation: borderMove 6s ease infinite;
+
   z-index: -1;
+}
+
+/* animation */
+@keyframes borderMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* inner glass */
